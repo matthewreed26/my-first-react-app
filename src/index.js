@@ -11,10 +11,11 @@ const aPlace = {
   name: 'World'
 };
 
-const element =
-  <h1>Hello, {formatPlace(aPlace)}!</h1>;
+function Element(props) {
+  return <h1>Hello, {props.myPlace}!</h1>;
+}
 
 ReactDOM.render(
-  element,
+  <Element myPlace={formatPlace(aPlace)}/>,
   document.getElementById('root')
 );
