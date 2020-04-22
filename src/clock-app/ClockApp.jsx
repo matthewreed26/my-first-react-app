@@ -11,6 +11,9 @@ class ClockApp extends React.Component {
     return (
       <div>
           {this.state.toggleClock ? <Clock /> : <p>No Clock</p>}
+          {this.state.toggleClock ? <Clock /> : <p>No Clock</p>}
+          {this.state.toggleClock ? <Clock /> : <p>No Clock</p>}
+          {this.state.toggleClock ? <Clock /> : <p>No Clock</p>}
           <button onClick={()=>this.setState({toggleClock: !this.state.toggleClock})}>Toggle Clock</button>
       </div>
     );
