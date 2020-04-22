@@ -1,5 +1,5 @@
 import React from 'react';
-import Clock from './clock/Clock';
+import ClockKeeper from './clock-keeper/ClockKeeper';
 
 class ClockApp extends React.Component {
   constructor(props){
@@ -10,11 +10,8 @@ class ClockApp extends React.Component {
   render(){
     return (
       <div>
-          {this.state.toggleClock ? <Clock /> : <p>No Clock</p>}
-          {this.state.toggleClock ? <Clock /> : <p>No Clock</p>}
-          {this.state.toggleClock ? <Clock /> : <p>No Clock</p>}
-          {this.state.toggleClock ? <Clock /> : <p>No Clock</p>}
           <button onClick={()=>this.setState({toggleClock: !this.state.toggleClock})}>Toggle Clock</button>
+          {this.state.toggleClock ? <ClockKeeper numClocks={4}/> : <p>No Clock</p>}
       </div>
     );
   }

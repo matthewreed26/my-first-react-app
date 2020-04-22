@@ -1,6 +1,7 @@
 import React from 'react';
+import Clock from './clock/Clock';
 
-class Clock extends React.Component {
+class ClockKeeper extends React.Component {
     constructor(props) {
       super(props);
       this.state = { date: new Date() };
@@ -10,12 +11,12 @@ class Clock extends React.Component {
       this.timerID = setInterval(
       () => this.tick(),
       1000);
-      alert('component mounted!');
+      // alert('component mounted!');
     }
   
     componentWillUnmount() {
       clearInterval(this.timerID);
-      alert('now unmounted!');
+      // alert('now unmounted!');
     }
   
     tick() {
@@ -25,13 +26,15 @@ class Clock extends React.Component {
     }
   
     render() {
+      const clockKeys = [...Array(this.props.numClocks).keys()];
+      const clocks = clockKeys.map((clockKey) =>
+        <Clock key={'id'+clockKey} date={this.state.date}/>
+      );
+
       return (
-        React.createElement("div", null,
-        React.createElement("h1", null, "Hello, world!"),
-        React.createElement("h2", null, "It is ", this.state.date.toLocaleTimeString(), ".")));
-  
-  
+        <div>{clocks}</div>
+      );
     }
 }  
   
-export default Clock;
+export default ClockKeeper;
