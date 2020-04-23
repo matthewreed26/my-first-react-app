@@ -4,19 +4,19 @@ import ClockKeeper from './clock-keeper/ClockKeeper';
 class ClockApp extends React.Component {
   constructor(props){
     super(props);
-    this.state={toggleClock: false};
+    this.state={
+      toggleClock: false,
+      numClocks: 4
+    };
   }
-
   render(){
     return (
       <div>
-          <button onClick={
-            (e)=>{
-              this.setState({toggleClock: !this.state.toggleClock})
-              e.persist();
-              console.log(e);
-            }}>Toggle Clock</button>
-          {this.state.toggleClock ? <ClockKeeper numClocks={4}/> : <p>No Clock</p>}
+        <p>Number of Clocks to Display: {this.state.numClocks}</p>
+        <input type="range" min="1" max="10" defaultValue={this.state.numClocks}
+            onChange={(e)=>this.setState({numClocks: Number(e.target.value)})}></input>
+        <button onClick={()=>this.setState({toggleClock: !this.state.toggleClock})}>Toggle Clock</button>
+        {this.state.toggleClock ? <ClockKeeper numClocks={this.state.numClocks}/> : <p>No Clock</p>}
       </div>
     );
   }
