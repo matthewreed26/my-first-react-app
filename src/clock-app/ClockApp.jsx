@@ -10,7 +10,12 @@ class ClockApp extends React.Component {
   render(){
     return (
       <div>
-          <button onClick={()=>this.setState({toggleClock: !this.state.toggleClock})}>Toggle Clock</button>
+          <button onClick={
+            (e)=>{
+              this.setState({toggleClock: !this.state.toggleClock})
+              e.persist();
+              console.log(e);
+            }}>Toggle Clock</button>
           {this.state.toggleClock ? <ClockKeeper numClocks={4}/> : <p>No Clock</p>}
       </div>
     );
